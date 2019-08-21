@@ -1,0 +1,42 @@
+<h2>Gran selección de vinos. <small>Todos en stock!</small></h2>
+
+<app-zoom-vino [vinoSelec]="vinoSelec"></app-zoom-vino>
+
+<div class="row">
+  <div class="col">
+
+    <nav aria-label="Paginador">
+      <ul class="pagination justify-content-center" *ngIf="pager.pages && pager.pages.length">
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a class="page-link" (click)="setPage(1)">Primero</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a class="page-link" (click)="setPage(pager.currentPage - 1)">Anterior</a>
+        </li>
+        <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a class="page-link" (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a class="page-link" (click)="setPage(pager.currentPage + 1)">Siguiente</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a class="page-link" (click)="setPage(pager.totalPages)">Último</a>
+        </li>
+      </ul>
+    </nav>
+
+    <hr style="clear: both;">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="row mt-5 ml-5 animated fadeIn">
+    <app-vino
+            *ngFor="let current of pagedItems"
+            [vino]="current"
+            (mouseenter)="selecVino(current)"
+              (mouseleave)="vinoSelec=null"></app-vino>
+    </div>
+  </div>
+</div>

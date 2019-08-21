@@ -1,0 +1,16 @@
+<div id="marco" *ngIf="vinoSelec">
+  <div class="row">
+    <div class="col justify-content-center">
+      <img width="50%" src="/assets/img/{{vinoSelec.imagen}}" class="img-responsive">
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <h3>{{vinoSelec.nombre}}</h3>
+      <h4>{{vinoSelec.region}}</h4>
+      <h4>{{vinoSelec.uvas}}</h4>
+      <h4>{{vinoSelec.anyo}}</h4>
+      <p>{{vinoSelec.descripcion}}</p>
+    </div>
+  </div>
+</div>
